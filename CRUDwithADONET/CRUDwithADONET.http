@@ -1,0 +1,6 @@
+@CRUDwithADONET_HostAddress = http://localhost:5192
+
+GET {{CRUDwithADONET_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
