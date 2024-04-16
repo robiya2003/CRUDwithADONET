@@ -39,7 +39,7 @@ namespace CRUDwithADONET.Controllers
             #endregion
         }
         [HttpPost]
-        public string PostUsers(UserClassTDO user)
+        public UserClassTDO PostUsers(UserClassTDO user)
         {
             #region
             string query = $"insert into users(name,phonenumber,email,password) values" +
@@ -50,7 +50,7 @@ namespace CRUDwithADONET.Controllers
                 NpgsqlCommand cmd = new NpgsqlCommand(query,npgsqlConnection);
                 var rows=cmd.ExecuteNonQuery();
             }
-                return $"malumot qoshildi";
+                return user;
             #endregion
         }
         [HttpDelete]

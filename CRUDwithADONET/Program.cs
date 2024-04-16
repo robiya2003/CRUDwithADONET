@@ -5,9 +5,20 @@ namespace CRUDwithADONET
     {
         public static void Main(string[] args)
         {
+            var MyAllow = "_robiya";
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllow, policy =>
+                {
+                    policy.AllowAnyHeader()
+                           .AllowAnyOrigin()
+                           .AllowAnyMethod();
+                });
+            });
+
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -24,6 +35,7 @@ namespace CRUDwithADONET
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(MyAllow);
 
             app.UseAuthorization();
 
